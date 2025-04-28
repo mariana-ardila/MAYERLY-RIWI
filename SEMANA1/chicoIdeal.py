@@ -1,7 +1,7 @@
 puntaje=0
 
 
-pregunta=int(input("¿QUE EDAD TIENES?: "))
+pregunta=int(input("¿QUE EDAD TIENES? (Mayor 22): "))
 if pregunta>=22:
     puntaje=puntaje+20
     pregunta1=input("¿Eres aseado?:")
@@ -19,7 +19,7 @@ if pregunta>=22:
         puntaje=puntaje+20
         pregunta4=input("¿Tienes mascotas?: ")
         if pregunta4=="si":
-            puntaje=puntaje+15
+            puntaje=puntaje+10
         elif pregunta4=="no":
             puntaje=puntaje+5
     else:
@@ -34,26 +34,28 @@ if pregunta>=22:
     pregunta6=input("¿Pasas tiempo de calidad con tu familia?: ")
     if pregunta6=="si":
         puntaje=puntaje+15
+    elif pregunta6=="a veces":
+        puntaje=puntaje+5
         pregunta7=input("¿Tienes hijos?: ")
         if pregunta7=="si":
             puntaje=puntaje-20
         else:
             puntaje=puntaje-20
-        pregunta8=input("¿Quieres tener hijos?: ")
-        if pregunta8=="si":
-            puntaje=puntaje+0
+            pregunta8=input("¿Quieres tener hijos?: ")
+            if pregunta8=="si":
+                puntaje=puntaje+0
     else:
-            puntaje=puntaje-10
+        puntaje=puntaje-10
 
     pregunta9=input("¿Estas trabajando?: ")
     if pregunta9=="si":
         puntaje=puntaje+15
         pregunta10=input("¿Te gusta estudiar?: ")
         if pregunta10=="si":
-            puntaje=puntaje+15
+            puntaje=puntaje+10
         pregunta11=input("¿Te gusta salir?: ")
         if pregunta11=="si":
-            puntaje=puntaje+15
+            puntaje=puntaje+10
         else:
             puntaje=puntaje-5
     else:
