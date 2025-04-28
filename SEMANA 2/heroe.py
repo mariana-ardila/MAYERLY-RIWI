@@ -1,3 +1,4 @@
+print("Te encuentras en vacaciones en Roma, pero llega un reclutador de heroes,\nporque necesitaban combatir contra unos villanos que estaban poniendo en peligro la dignidad de las persona")
 heroe = str(input("Hola Heroe, ¿te encuentras solo?: "))
 
 nivel = 35
