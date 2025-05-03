@@ -1,22 +1,42 @@
-# Entrada de calificaciones
-inicio = input("Ingresa una lista de calificaciones separadas por comas (ej. 3.5, 4.0, 2.5): ")
+# Entrada de calificaciones con validación
+while True:
+    inicio = input("Ingresa una lista de calificaciones separadas por comas (ej. 3.5, 4.0, 2.5): ")
+    calificaciones = []
+    entrada_valida = True 
 
-calificaciones = []  # Creamos lista vacía para almacenar las calificaciones
+### Validar que la entrada este en el formato correcto y que las calificaciones sean números entre 0.0 y 5.0
+    for numero in inicio.split(","):
+        try:
+            calificacion = float(numero.strip())
+            if 0.0 <= calificacion <= 5.0:
+                calificaciones.append(calificacion)
+            else:
+                print(f"Error: La calificación {calificacion} está fuera del rango permitido (0.0 a 5.0).")
+                entrada_valida = False
+                break
+        except ValueError:
+            print(f"Error: '{numero}' no es un número válido.")
+            entrada_valida = False
+            break
 
-# Convertir la cadena de entrada en una lista de números flotantes
-for numero in inicio.split(","):
-    calificaciones.append(float(numero.strip()))
+    if entrada_valida:
+        break 
 
 # Mostrar la lista de calificaciones ya convertida
 print("Lista de calificaciones:", calificaciones)
 
-# Validar entrada hasta que se ingrese una calificación existente
+# Validar entrada hasta que se ingrese una calificación existente y válida
 while True:
-    calificacion_buscada = float(input("Ingresa la calificación a buscar: "))
-    if calificacion_buscada in calificaciones:
-        break
-    else:
-        print("LA CALIFICACIÓN BUSCADA NO ESTÁ EN LA LISTA. INTENTA DE NUEVO.")
+    try:
+        calificacion_buscada = float(input("Ingresa la calificación a buscar (entre 0.0 y 5.0): "))
+        if not (0.0 <= calificacion_buscada <= 5.0):
+            print("Error: La calificación debe estar entre 0.0 y 5.0.")
+        elif calificacion_buscada not in calificaciones:
+           print("La calificación buscada no está en la lista. Intenta de nuevo.") 
+        else:
+            break
+    except ValueError:
+        print("Error: Debes ingresar un número válido.")
 
 print("Calificación buscada:", calificacion_buscada)
 
@@ -35,6 +55,8 @@ promedio = suma / len(calificaciones)
 print("El promedio de las calificaciones es:", promedio)
 if promedio >= 3.0:
     print("¡Curso aprobado!")
+else:
+    print("¡Curso reprobado!")
 
 # Contar cuántas calificaciones son mayores al valor buscado
 contador_may = 0
@@ -45,12 +67,12 @@ while i < len(calificaciones):
     i += 1
 print("La cantidad de calificaciones mayores a", calificacion_buscada, "es:", contador_may)
 
-# Contar cuántas veces aparece la calificación buscada
+# Contar cuántas veces aparece la calificación buscada, usando break y continue
 contador_iguales = 0
 for calificacion in calificaciones:
     if calificacion != calificacion_buscada:
-        continue  # Si la calificación no es igual a la buscada, saltamos a la siguiente iteración
+        continue
     contador_iguales += 1
-    if contador_iguales > 5:## si se encuentra n veces la calificación, se detiene la búsqueda
-        break  # Rompe el ciclo si se alcanza el límite
+
 print("La calificación buscada aparece", contador_iguales, "veces en la lista")
+
