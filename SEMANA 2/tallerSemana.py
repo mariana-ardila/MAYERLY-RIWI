@@ -48,6 +48,9 @@ print("La cantidad de calificaciones mayores a", calificacion_buscada, "es:", co
 # Contar cuántas veces aparece la calificación buscada
 contador_iguales = 0
 for calificacion in calificaciones:
-    if calificacion == calificacion_buscada:
-        contador_iguales += 1
+    if calificacion != calificacion_buscada:
+        continue  # Si la calificación no es igual a la buscada, saltamos a la siguiente iteración
+    contador_iguales += 1
+    if contador_iguales > 5:## si se encuentra n veces la calificación, se detiene la búsqueda
+        break  # Rompe el ciclo si se alcanza el límite
 print("La calificación buscada aparece", contador_iguales, "veces en la lista")
