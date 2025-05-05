@@ -7,7 +7,7 @@ def saludar(nombre, edad, apellido):
 saludar("MAYERLY", 20, "ZAPATA")
 
 ##VALOR POR DEFECTO INGRESADO POR EL USUARIO
-##Cuando se define un valor por defecto, no es necesario ingresarlo al momento de llamar la funcion, se deja la funcioon vacia
+##Cuando se define un valor por defecto, no es necesario ingresarlo al momento de llamar la funcion, se deja la funciop
 def sumar(): ##definicion de la funcion
     a=int(input("ingrese el primer numero: ")) ##entrada de datos
     b=int(input("ingrese el segundo numero: "))

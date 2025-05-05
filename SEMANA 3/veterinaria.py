@@ -2,55 +2,58 @@
 #  recuerda que pasa nombre, edad y enfermo cada uno debe de guardarse en su propia lista
 
 
-print ("BIENVENIDO A LA VETERINARIA MASCOTAS FELICES")
-print ("1. Agregar mascota")
-print ("2. Eliminar mascotas")
-print ("3. Listar mascotas")
-print ("4. Salir")
-
 nombre=[]
 edad=[]
 enfermo=[]
-match True:
-    case True:
-        opcion=int(input("Por favor ingrese la opcion deseada: "))
-        if opcion==1:
-          def agregarMascota():
-            name=input("Por favor ingrese el nombre de la mascota: ")
-            edad=int(input("Por favor ingrese la edad de la mascota: "))
-            enfermo=input("La mascota esta enferma? (si/no): ").lower()
-            if enfermo =="si":
-                enfermo=True
-            else:
-                enfermo=False
-            nombre.append(nombre)
-            edad.append(edad)
-            enfermo.append(enfermo)
-            print("Mascota agregada con exito")
-        elif opcion==2:
-            def eliminarMascota():
-                name=input("Por favor ingrese el nombre de la mascota a eliminar: ")
-                if nombre in nombre:
-                    index=nombre.index(nombre)
-                    del nombre[index]
-                    del edad[index]
-                    del enfermo[index]
-                    print("Mascota eliminada con exito")
-                else:
-                    print("La mascota no existe")
-        elif opcion==3:
-           def listarMascotas():
-            for i in range(len(nombre)):
-                print(f"Nombre: {nombre[i]}, Edad: {edad[i]}, Enfermo: {enfermo[i]}")
+
+def agregarMascota():
+    name=input("Por favor ingrese el nombre de la mascota: ")
+    eda=input("Por favor ingrese la edad de la mascota: ")
+    enfer=input("La mascota esta enferma? (si/no): ").lower()
+    if enfer =="si":
+        enfer=True
+    else:
+        enfer=False
+    nombre.append(name)
+    edad.append(eda)
+    enfermo.append(enfer)
+    print("Mascota agregada con exito")
+        
+
+def eliminarMascota():
+    name=input("Por favor ingrese el nombre de la mascota a eliminar: ")
+    if nombre in nombre:
+        index=nombre.index(name)
+        nombre.pop[index]
+        edad.pop[index]
+        enfermo.pop[index]
+
+    print("Mascota eliminada con exito")
+    
+
+def listarMascotas():
+    if not nombre:
+        print("No hay mascotas registradas")
+    else: 
+        for i in range(len(nombre)):
+            estado="Enfermo" if enfermo[i] else "Sano"
+            print(f"Nombre: {nombre[i]}, Edad: {edad[i]}, Estado: {estado}")
             print("Mascotas listadas con exito")
-        elif opcion==4:
-            print("Gracias por visitarnos")
-    case False:
-        print("Opcion no valida")
-        print("Por favor ingrese una opcion valida")
+    print("Gracias por visitarnos")
+    
 
 while True:
+    print ("BIENVENIDO A LA VETERINARIA MASCOTAS FELICES")
+    print ("1. Agregar mascota")
+    print ("2. Eliminar mascotas")
+    print ("3. Listar mascotas")
+    print ("4. Salir")
 
+    try: 
+        opcion=int(input("Por favor ingrese una opcion: "))
+    except ValueError:
+        print("Opcion no valida, por favor ingrese un numero")
+        continue
     if opcion==1:
         agregarMascota()
     elif opcion==2:
@@ -68,3 +71,4 @@ while True:
 
 
     
+
