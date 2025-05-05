@@ -22,11 +22,11 @@ def agregarMascota():
 
 def eliminarMascota():
     name=input("Por favor ingrese el nombre de la mascota a eliminar: ")
-    if nombre in nombre:
+    if name in nombre:
         index=nombre.index(name)
-        nombre.pop[index]
-        edad.pop[index]
-        enfermo.pop[index]
+        nombre.pop(index)
+        edad.pop(index)
+        enfermo.pop(index)
 
     print("Mascota eliminada con exito")
     
