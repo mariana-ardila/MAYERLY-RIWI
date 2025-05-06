@@ -1,9 +1,14 @@
 agenda={ 
-   "Juan": 3006041234,
-   "Carlos":3104229850,
-   "Mayerly": 3220544810,
-   "Samuel": 3006045993,
-
+  "nombre":{
+    "nombre1":"maye",
+    "nombre2":"juan",
+    "nombre3":"pedro"
+  },
+  "telefono":{
+    "telefono1":123456789,
+    "telefono2":987654321,
+    "telefono3":456789123
+  }
 }
 
 def agregarContacto():
@@ -14,7 +19,7 @@ def agregarContacto():
     print("Contacto agregado con exito")
 
 def eliminarContacto(): 
-    nombre=input("Por favor ingrese el nombre del contacto a eliminar: ")
+    nombre=input("Por favor ingrese el nombre del contacto a eliminar: ").lower()
     if nombre in agenda["nombre"].values():
         index=list(agenda["nombre"].values()).index(nombre)
         agenda["nombre"].pop(f"nombre{index+1}")
@@ -24,7 +29,7 @@ def eliminarContacto():
         print("Contacto no encontrado")
 
 def bucarContacto():
-    nombre=input("Por favor ingrese el nombre del contacto a buscar: ")
+    nombre=input("Por favor ingrese el nombre del contacto a buscar: ").lower()
     if nombre in agenda["nombre"].values():
         index=list(agenda["nombre"].values()).index(nombre)
         print(f"Nombre: {agenda['nombre'][f'nombre{index+1}']}, Telefono: {agenda['telefono'][f'telefono{index+1}']}")
@@ -44,3 +49,26 @@ def listarContactos():
 while True:
     print ("BIENVENIDO A LA AGENDA DE MAYE")
     print ("1. Agregar contacto")
+    print ("2. Eliminar contacto")
+    print ("3. Buscar contacto")
+    print ("4. Listar contactos")
+    print ("5. Salir")
+    try: 
+        opcion=int(input("Por favor ingrese una opcion: "))
+    except ValueError:
+        print("Opcion no valida, por favor ingrese un numero")
+        continue
+    if opcion==1:
+        agregarContacto()
+    elif opcion==2:      
+        eliminarContacto()
+    elif opcion==3: 
+        bucarContacto()
+    elif opcion==4:
+        listarContactos()
+    elif opcion==5:
+        print("Gracias por visitarnos")
+        break
+    else:
+        print("Opcion no valida")
+               
