@@ -1,21 +1,17 @@
 agenda={ 
   "nombre":{
-    "nombre1":"maye",
-    "nombre2":"juan",
-    "nombre3":"pedro"
+    
   },
   "telefono":{
-    "telefono1":123456789,
-    "telefono2":987654321,
-    "telefono3":456789123
+   
   }
 }
 
 def agregarContacto():
     nombre=input("Por favor ingrese el nombre del contacto: ")
     telefono=int(input("Por favor ingrese el telefono del contacto: "))
-    agenda["nombre"]["nombre4"]=nombre
-    agenda["telefono"]["telefono4"]=telefono
+    agenda["nombre"]["nombre"]=nombre
+    agenda["telefono"]["telefono"]=telefono
     print("Contacto agregado con exito")
 
 def eliminarContacto(): 
