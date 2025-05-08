@@ -36,8 +36,8 @@ def listarContactos():
     if not agenda["nombre"]:
         print("No hay contactos registrados")
     else: 
-        for i in range(len(agenda["nombre"])):
-            print(f"Nombre: {agenda['nombre'][f'nombre{i+1}']}, Telefono: {agenda['telefono'][f'telefono{i+1}']}")
+        for i, nombre in enumerate(agenda["nombre"].values(), start=1):
+            print(f"{i}. Nombre: {nombre}, Telefono: {agenda['telefono'].get(f'telefono{i}', 'No disponible')}")
         print("Contactos listados con exito")
     print("Gracias por visitarnos")
 
