@@ -3,56 +3,90 @@
 ##Para calcular el total del inventario se debe usar una funcion lambda
 
 
-##Creacion de diccionario
+##Create a dictionary to store the products
 inventory={}
-##Definicion metodo para añadir productos
+
+
+##Method to add products
 def addProduct():
-    name=input("Please, enter the product name: ")
-    price=float(input("Please, enter the product price: "))
-    cant=int(input("Please, enter the product quantity: "))
-    inventory[name]={"name": name, "price":price, "cant":cant} ##llamamos al diccionario y le asignamos el name del product como clave, luego le asignamos un diccionario con el name del product, price y cant
-    print("¡Product added successfully!") ##imprimimos el mensaje de exito
-    
-##METODO CONSULTAR
+    name = input("Please, enter the product name: ").lower() # ask for the product name
+    if not name.isalpha():  # name input validation ##ISALFA method to check if the name is a string
+        print("Invalid name, please enter a valid string (letters only)")
+        return
+    if name == "":  # name input validation
+        print("The name cannot be empty")
+        return
+    # number input validation for price
+    try:
+        price = float(input("Please, enter the product price: "))
+        if price <= 0:  # price input validation
+            print("The price must be a positive number")
+            return
+    except ValueError:
+        print("Invalid price, please enter a valid number")
+        return
+    # number input validation for quantity
+    try:
+        cant = int(input("Please, enter the product quantity: "))
+        if cant <= 0:  # quantity input validation
+            print("The quantity must be a positive integer")
+            return
+    except ValueError:
+        print("Invalid quantity, please enter a valid integer")
+        return
+
+    inventory[name] = {"name": name, "price": price, "cant": cant}  # create the product in the dictionary
+    print("¡Product added successfully!")
+
+#Method to consult products
 def consultProduct():
     name=input("Please, enter the name of the product to be queried: ")
-    if name in inventory: ##verificamos si el product existe en el diccionario
-        print("Product found") ##imprimimos el mensaje de exito
-        print(f"Name: {inventory[name]['name']}, Price: {inventory[name]['price']}, Quantity: {inventory[name]['cant']}")##imprimimos el product, price y cant,usamos el name como clave para acceder al diccionario
+    if name in inventory: ##verify if the product exists in the dictionary
+        print("Product found")
+        print(f"Name: {inventory[name]['name']}, Price: {inventory[name]['price']}, Quantity: {inventory[name]['cant']}")#print the product information
     else:
-        print("Product not found") ##si no existe el product imprimimos el mensaje de error
+        print("Product not found") ##if the product does not exist, print an error message
 
-##METODO ACTUALIZAR PRECIO
+#Method to update the price of a product
 def updatePrice():
     name=input("Please, enter the product el name del product to update: ")
     if name in inventory:
+        print("Product found")
         price=float(input("Please, enter the new price of the product: "))
-        inventory[name]["price"]=price ## BUscamos en el diccionario el product usando el name como la clave y le asignamos el nuevo price usando la clave price
-        print("Price updated successfully") ##imprimimos el mensaje de exito
+        if price >0: ##price input validation
+            inventory[name]['price']=price ##we search the product in the dictionary using the name as key and assign the new price using the price key
+            print("Price updated successfully")
+        else:
+            print("The price must be greater than 0")
+        return
     else:
-        print("Product not found") ##si no existe el product imprimimos el mensaje de error
+        print("Product not found") 
         
-##METODO ELIMINAR PRODUCTOS
+#Method to delete a product
 def deleteProduct():
     name=input("Please, enter the name of the product to be deleted: ")
-    if name in inventory:
-        inventory.pop(name) ##buscamos el product en el diccionario usando el name como la clave y lo eliminamos con el metodo pop
-        print("Price deleted successfully") ##imprimimos el mensaje de exito
+    if name in inventory: ##verify if the product exists in the dictionary
+        print(inventory[name]) ##print the product information
+        confirm=input("Are you sure you want to delete this product? (yes/no): ") ##ask for confirmation to delete the product
+        if confirm.lower() == "yes".lower(): ##if the user confirms, delete the product
+            inventory.pop(name) ##focus on the product in the dictionary using the name as the key and delete it
+            print("Product deleted successfully")
+        
     else:
-        print("Product not found") ##si no existe el product imprimimos el mensaje de error
+        print("Product not found") 
 
-##METODO LISTAR PRODUCTOS
+##Method to list products
 def listProduct():
-    if not inventory: ##verificamos si el diccionario esta vacio
-        print("No products registered") ##imprimimos el mensaje de error
+    if not inventory: #verify if the inventory is empty
+        print("No products registered") 
     else: 
-        for i, name in enumerate(inventory.keys(), start=1): ##enumerate nos permite recorrer el diccionario y obtener el indice y el name del product, el . keys nos permite obtener las claves del diccionario y el start=1 nos permite empezar desde 1
+        for i, name in enumerate(inventory.keys(), start=1): ##enumerate the dictionary to get the index and the name of the product
             print(f"{i}. name: {inventory[name]['name']}, price: {inventory[name]['price']}, quantity: {inventory[name]['cant']}")
         print("Products listed successfully") ##imprimimos el mensaje de exito
     
-##METODO CALCULAR TOTAL FUNCION LAMBDA
-calculateTotal = lambda: sum(map(lambda x: x["price"] * x["cant"], inventory.values())) ##usamos la funcion map para recorrer el diccionario y multiplicar el price por la cant, luego usamos la funcion sum para sumar todos los valores
-print("|The total inventory is: ", "|" ,calculateTotal() ,"|")
+##Method to calculate the total of the inventory
+calculateTotal = lambda: sum(map(lambda x: x["price"] * x["cant"], inventory.values())) ##calculate the total of the inventory using a lambda function and the map function to iterate over the values of the dictionary and multiply the price by the quantity
+print("The total inventory is: " ,calculateTotal() )
 
 ##MENU
 while True: 
@@ -68,7 +102,7 @@ while True:
     try: 
         option=int(input("Please, enter an option: "))
     except ValueError:
-        print("Invalid option, please enter a number") ##imprimimos el mensaje de error
+        print("Invalid option, please enter a number") 
         continue
     if option==1:
         addProduct()
