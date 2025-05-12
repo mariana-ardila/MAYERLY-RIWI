@@ -1,9 +1,9 @@
 inventory=[
-    {"name": "Rice", "price": 3.000, "quantity": 100},
-    {"name": "Sugar", "price": 30.000, "quantity": 50},
-    {"name": "Salt", "price": 15.000, "quantity": 30},
-    {"name": "Lemon", "price": 55.000, "quantity": 42},
-    {"name": "Bread", "price": 30.000, "quantity": 5}
+    {"name": "Rice", "price": 4000, "quantity": 10},
+    {"name": "Sugar", "price": 3000, "quantity": 50},
+    {"name": "Salt", "price": 1500, "quantity": 30},
+    {"name": "Lemon", "price": 2000, "quantity": 42},
+    {"name": "Bread", "price": 1000, "quantity": 5}
 ]
 
 
@@ -11,33 +11,14 @@ inventory=[
 
 #Add product method
 
-def addProduct ():
-    #We request product entry data
-    name=input("Please, enter the name of product: ")
-    price=float(input("Please, enter the price of product: "))
-    quantity=int(input("Please, enter the quantity of product: "))
-    #we store the data entered in the list using the append method 
+def addProduct (name, price, quantity):
     inventory.append({"name": name, "price": price, "quantity": quantity})
-
-    ##number input validation
-    if price <0:
-        print("The price must be greater than 0")
-        return
-    elif quantity <0:
-        print("The quantity must be greater than 0")
-        return
-    else:
-        print("¡Product added successfully!")
-
-print(addProduct)
-
+    print("¡Product added successfully!")
 #-----------------------------------------------------------------------------------------------------------
 
 #Consult product method 
 
-def consultProduct ():
-    name=input("Please, enter the name of the product focus: ")
-    #check if the product exists in the dictionary used For-Else
+def consultProduct (name):
     for product in inventory:
         if product["name"].lower()==name.lower():
             print("Product found")
@@ -49,34 +30,36 @@ def consultProduct ():
 
 #------------------------------------------------------------------------------------------------------------
 
-def updateProduct ():
-    name=input("Please enter the name of the product you wish to update: ")
+def updateProduct (name):
     #Check if the product exists in the dictionary used For-Else
     for product in inventory:
         #We check if the product name in the position is the same as the entered name.
-        if product["name"].lower()==name.lower():
-            print("Product found")
-            newPrice=float(input("Please, enter the new price of product: $"))
+        try:
+            if product["name"].lower()==name.lower():
+                print("Product found")
+                newPrice=float(input("Please, enter the new price of product: $"))
 
-            #price input validation
-        if newPrice >0: ##price input validation
-            ##We search the product in the dictionary using the name as key and assign the new price using the price key
-            product["price"]=newPrice 
-            print("Price updated successfully")
-        else:
-            print("The price must be greater than 0")
-        return
+                #price input validation
+            if newPrice >0: ##price input validation
+                ##We search the product in the dictionary using the name as key and assign the new price using the price key
+                product["price"]=newPrice 
+                print("Price updated successfully")
+            else:
+                print("The price must be greater than 0")
+            return
+        except ValueError:
+            print("Enter a valid number")
     else:
         print("Product not found in the inventory")
+        
 
 #-------------------------------------------------------------------------------------------------------------
 
-def deleteProduct():
-    name=input("Please, enter the name of the product you wish to delete: ")
+def deleteProduct(name,delete):
     for product in inventory:
         if product["name"].lower()==name.lower():
             print("The product exists in the inventory")
-            delete=input("Do you want to delete the product? (yes/no): ")
+           
             if delete.lower()=="yes":
                 ###we search the product in the dictionary using the name as key and remove it with the remove method
                 inventory.remove(product) 
@@ -91,13 +74,11 @@ def deleteProduct():
 #-------------------------------------------------------------------------------------------------------------------
 
 def calculateTotal ():
-    total=0
-    for product in inventory:
+    total=sum(product["price"] * product["quantity"] for product in inventory)
         #we calculate the total     
-        total+=product["price"]*product["quantity"]
-        return total
-    #print the total with 2 decimal used .2f
-    print(f"The total inventory is: ${calculateTotal():.2f}")
+    return
+print(f"The total inventory is: ${calculateTotal():,.2f}")
+
 
 #-------------------------------------------------------------------------------------------------------------------
 
@@ -119,25 +100,54 @@ while True:
         print("Invalid option. Please enter a number.")
         continue
 
+    else: 
+        match option:
+            case 1:
+                name=input("Please, enter the name of product: ").lower()
+                while True:
+                    try:
+                        price=float(input("Please, enter the price of product: "))
+                        if price<0:
+                            print("Please, the price must be greater than 0")
+                        else:
+                            break   
+                    except ValueError:
+                        print("Enter the price valid")
+                while True:
+                    try:
+                        quantity=float(input("Please, enter the quantity of product: "))
+                        if quantity<0:
+                            print("The value has to be a positive number ")
+                        else:
+                            break
+                    except ValueError:
+                        print("Enter a valid number")
+                addProduct(name, price,quantity)
 
-    if option==1:
-        addProduct()
-    
-    if option==2:
-        consultProduct()
+            case 2: 
+                name=input("Please, enter the name of the product focus: ").lower()
+                consultProduct(name)
+            case 3:
+                name=input("Please enter the name of the product you wish to update: ").lower()
+                updateProduct(name)
+            case 4:
+                name=input("Please, enter the name of the product you wish to delete: ")
+                delete=input("Do you want to delete the product? (yes/no): ")
+                deleteProduct(name,delete)
+            case 5:
+                calculateTotal()
+                
+            case 6:
+                print("Exit the inventory")
+                break            
 
-    if option==3:
-        updateProduct()
 
-    if option==4:
-        deleteProduct()
-    
-    if option==5:
-        print(f"The total inventory is: ${calculateTotal()}")
 
-    if option==6:
-        print("Tanks for you visit")
 
+
+                
+
+ 
 
 
 
