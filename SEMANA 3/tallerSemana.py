@@ -1,4 +1,4 @@
-# DIGITAL INVENTORY SYSTEM
+
 # Inventory is a list of product dictionaries
 inventory = []
 
