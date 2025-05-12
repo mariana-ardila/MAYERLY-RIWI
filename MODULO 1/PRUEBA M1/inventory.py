@@ -17,7 +17,7 @@ def addProduct ():
     price=float(input("Please, enter the price of product: "))
     quantity=int(input("Please, enter the quantity of product: "))
     #we store the data entered in the list using the append method 
-    inventory.append({"name": name, "price": price, "quantity":quantity})
+    inventory.append({"name": name, "price": price, "quantity": quantity})
 
     ##number input validation
     if price <0:
@@ -27,7 +27,7 @@ def addProduct ():
         print("The quantity must be greater than 0")
         return
     else:
-        print("¡Book added successfully!")
+        print("¡Product added successfully!")
 
 print(addProduct)
 
@@ -42,7 +42,7 @@ def consultProduct ():
         if product["name"].lower()==name.lower():
             print("Product found")
             #Print dates of the product
-            print(f"Product: {product["name"]}, Price: {product["price"]}, Quantity{product["quantity"]}")
+            print(f"Product: {product["name"]}, Price: {product["price"]}, Quantity: {product["quantity"]}")
             return
     else:
         print("Product no found in the inventory")
