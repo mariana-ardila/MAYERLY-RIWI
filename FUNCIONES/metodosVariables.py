@@ -1,5 +1,6 @@
 
 variable="hola mundo"
+variable1= "35"
 
 #capitalize()	Convierte el primer carácter a mayúscula.	"hola mundo" → "Hola mundo"
 var=variable.capitalize()
@@ -68,8 +69,36 @@ print(var)
 #isalnum()	Retorna True si todos los caracteres son alfanuméricos.	"abc123".isalnum() → True
 var=variable.isalnum()
 print(var)
+
 #isspace()	Retorna True si solo contiene espacios.	" ".isspace() → True
+var=variable.isspace()
+print(var)
+
 #count(sub)	Cuenta las apariciones de un substring.	"banana".count("a") → 3
+var=variable.count("a")
+print(var)
+
 #zfill(width)	Rellena el string con ceros a la izquierda hasta un ancho dado.	"42".zfill(5) → "00042"
+var=variable1.zfill(5)
+print(var)
+
 #swapcase()	Invierte mayúsculas por minúsculas y viceversa.	"Hola".swapcase() → "hOLA"
+var=variable.swapcase()
+print(var)
+
 #center(width)	Centra el string en un ancho determinado, rellenando con espacios.	"hi".center(5) → " hi "
+var=variable.center(5)
+print(var)
+
+#ljust(width)	Alinea a la izquierda, rellenando con espacios a la derecha.	"hi".ljust(5) → "hi   "
+var=variable.ljust(5)
+print(var)
+
+#rjust(width)	Alinea a la derecha, rellenando con espacios a la izquierda.	"hi".rjust(5) → "   hi"
+var=variable.rjust(5)
+print(var)
+
+#partition(sep)	Divide el string en una tupla de tres partes: antes, el separador y después.	"hola mundo".partition(" ") → ("hola", " ", "mundo")
+var=variable.partition(" ")
+print(var) #('hola', ' ', 'mundo')
+
