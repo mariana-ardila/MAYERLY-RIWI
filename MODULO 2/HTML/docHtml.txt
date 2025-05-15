@@ -1,0 +1,46 @@
+HTML
+Es un lenguaje de marcado de hipertexto ***Hypertext Markup Lenguaje*** tambien se puede decir que es un lenguaje de etiquetas
+Se usa para definir la estructura y el contenido de una pagina.
+
+hipertexto hace referencia a los enlaces que conectan las paginas web entre si 
+
+ETIQUETAS 
+Se usan para contener información y darle signficado a dicha informacion
+
+SINTAXIS
+<etiqueta>contenido</etiqueta>
+
+CATEGORIA DE ETIQUETAS
+1️⃣ Textuales: Partes, fragmentos o tipos de textos.
+    <a>	        Fragmento de texto que enlaza a otra página diferente.	                                            manz.dev	            <a>
+    <strong>	Fragmento de texto importante o palabras clave.	                                                    Texto importante	    <strong>
+    <em>	    Fragmento de texto enfatizado respecto a la frase que lo contiene.	                                Texto enfatizado	    <em>
+    <mark>	    Fragmento de texto resaltado, simulando estar marcado con rotulador amarillo.	                    Texto marcado	        <mark>
+    <b>	        Fragmento de texto sin importancia destacable (fines utilitarios).	                                Texto destacado         <b>
+    <i>	        Fragmento de texto con voz o tono alternativo al resto.	                                            Texto alternativo	    <i>
+    <u>	        Fragmento de texto para nombres propios o escritura incorrecta intencionada.	                    «Manz»	                <u>
+    <s>	        Fragmento de texto inexacto o que ya no es relevante.	                                            Errores o inexactitudes	<s>
+    <span>	    Fragmento de texto genérico sin significado (útil para seleccionar).	                            Fragmento de texto	    <span>
+
+
+2️⃣ Agrupación: Agrupa partes o información de cierta naturaleza.
+3️⃣ Multimedia: Imágenes, video, sonido y relacionados.
+4️⃣ Tablas: Mostrar datos e información tabular relacionada.
+5️⃣ Formularios: Permite al usuario insertar información o datos.
+6️⃣ Interactivas: Elementos con los que el usuario puede interactuar.
+7️⃣ Semánticas: Variaciones semánticas del <div> y relacionados.
+8️⃣ Scripting: Etiquetas relacionadas con Javascript.
+
+
+
+
+
+
+
+
+
+
+
+
+REFERENCIAS
+https://lenguajehtml.com/html/cheatsheets/
