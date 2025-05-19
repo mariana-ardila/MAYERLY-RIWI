@@ -1,0 +1,13 @@
+nav ul{
+    list-style: none; /*me quita los puntos de la lista*/
+    background-color: bisque; /*color de fondo*/
+    font-family: 'Times New Roman', Times, serif;
+    padding: auto; /*elimina el espacio interno*/
+    margin: auto;  /*elimina el espacio externo*/
+    gap: 15px;     /*espacio entre los elementos del menu*/
+    justify-content: center; /*Me centra el menu*/
+    display: flex; /*Para que mi nav se vea en fila y no en columna, o sea linea horizontal*/
+}
+img{
+    width: 100%;
+}
